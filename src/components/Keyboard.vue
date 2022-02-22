@@ -64,47 +64,69 @@ export default {
                 {{ letter }}
             </div>
         </div>
-    </div>
 
-    <div class="actions">
-        <div @click="erase" class="button">&#129044;</div>
-        <div @click="check" class="button">OK</div>
+        <div class="actions">
+            <div @click="erase" class="button">&#129044;</div>
+            <div @click="check" class="button">OK</div>
+        </div>
     </div>
 </template>
 
 <style scoped>
 .button.green {
-  background-color: #5ab51c;
+  background-color: var(--right);
 }
 .button.orange {
-  background-color: orange;
+  background-color: var(--halfright);
 }
 .button.grey {
-  background-color: #cacaca;
+  background-color: var(--wrong);
 }
 
 .kbline {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .keyboard .button {
-  width: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  line-height: 2.75rem;
 }
 .button {
   margin: 0.1rem;
   padding: 0.1rem;
-  background: #f7f7f7;
+  background: var(--enabled);
   text-align: center;
   cursor: pointer;
-  border: 1px solid #eee;
+  border: 1px solid var(--color-border);
 }
 .actions {
   margin: 0.1rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 .actions .button {
   min-width: 4.5rem;
+}
+.actions .button:first-child {
+  line-height: 3.2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .keyboard {
+    position: fixed;
+    bottom: .5em;
+  }
+  .keyboard .button {
+    width: 1.8rem;
+    height: 1.8rem;
+    line-height: 2rem;
+    margin: .05rem;
+  }
+  .actions .button:first-child {
+    line-height: 2.2rem;
+  }
 }
 </style>
