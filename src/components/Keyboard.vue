@@ -117,6 +117,8 @@ export default {
 @media screen and (max-width: 600px) {
   .keyboard {
     position: fixed;
+    left: 0;
+    right: 0;
     bottom: .5em;
   }
   .keyboard .button {

@@ -28,6 +28,11 @@ header, main {
   max-width: 28rem;
   margin: auto;
 }
+main {
+  display: flex;
+  justify-content: column;
+  flex-direction: column;
+}
 header nav {
   display: flex;
   justify-content: center;
@@ -56,6 +61,10 @@ h1 {
 }
 header {
   margin-top: 4rem;
+}
+
+.error {
+  text-align: center;
 }
 
 @media screen and (max-width: 600px) {
