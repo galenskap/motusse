@@ -34,7 +34,7 @@ export default {
       // if the word has already been found, disable the functionnality
       if (this.found) return;
       if (this.currentCombo.length < this.comboToGuess.length) {
-        this.currentCombo.push(e.originalTarget.textContent);
+        this.currentCombo.push(e.currentTarget.textContent);
         this.errorLength = false;
       }
     },
