@@ -179,24 +179,39 @@ export default {
   flex-wrap: nowrap;
 }
 .hint {
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  line-height: 2.75rem;
   margin: 0.1rem;
-  border: 1px solid #444;
+  border: 1px solid var(--color-border);
 }
 .hint span {
   vertical-align: middle;
 }
 .green {
-  background-color: #5ab51c;
+  background-color: var(--right);
 }
 .orange {
-  background-color: orange;
+  background-color: var(--halfright);
 }
 .grey {
-  background-color: #cacaca;
+  background-color: var(--wrong);
 }
 .lightgrey {
-  background: #f7f7f7;
+  background: var(--enabled);
+}
+
+@media screen and (max-width: 600px) {
+  .keyboard {
+    position: fixed;
+    bottom: .5em;
+  }
+  .hint {
+    width: 1.8rem;
+    height: 1.8rem;
+    line-height: 2rem;
+    margin: .05rem;
+  }
 }
 </style>
