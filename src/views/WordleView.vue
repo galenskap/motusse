@@ -208,8 +208,8 @@ export default {
     bottom: .5em;
   }
   .hint {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 2rem;
+    height: 2rem;
     line-height: 2rem;
     margin: .05rem;
   }

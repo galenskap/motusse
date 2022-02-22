@@ -65,7 +65,7 @@ export default {
             </div>
         </div>
 
-        <div class="actions">
+        <div class="actions kbline">
             <div @click="erase" class="button">&#129044;</div>
             <div @click="check" class="button">OK</div>
         </div>
@@ -122,8 +122,8 @@ export default {
     bottom: .5em;
   }
   .keyboard .button {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 2rem;
+    height: 2rem;
     line-height: 2rem;
     margin: .05rem;
   }

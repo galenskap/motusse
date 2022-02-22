@@ -73,8 +73,8 @@ header {
   }
   header, main {
     max-width: auto;
-    margin: .5em;
-    font-size: 1.4rem;
+    margin: .5em auto;
+    font-size: 1.7rem;
   }
   #app {
     flex-direction: column;
