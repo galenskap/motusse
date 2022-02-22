@@ -65,12 +65,16 @@ header {
   header, main {
     max-width: auto;
     margin: .5em;
+    font-size: 1.4rem;
   }
   #app {
     flex-direction: column;
   }
   header {
     margin-top: 0;
+  }
+  main h1 {
+    font-size: 4rem;
   }
 }
 </style>
