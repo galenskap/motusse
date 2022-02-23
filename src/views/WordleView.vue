@@ -65,6 +65,14 @@ export default {
       let manipulableComboToGuess = [...this.comboToGuess];
       this.tries++;
 
+      this.checkGreens(retour, manipulableComboToGuess).then(this.checkOranges(retour, manipulableComboToGuess));
+
+      if (this.checkVictory()) {
+        return;
+      }
+    },
+
+    async checkGreens(retour, manipulableComboToGuess) {
       this.currentCombo.forEach((value, index) => {
         // check greens
         if (value == manipulableComboToGuess[index]) {
@@ -82,24 +90,26 @@ export default {
           };
         }
       });
+    },
 
+    checkOranges(retour, manipulableComboToGuess) {
+      let newRetour = [...retour];
       this.currentCombo.forEach((value, index) => {
         // check oranges
         if (manipulableComboToGuess.includes(value)) {
-          retour[index] = {
-            letter: value,
-            color: "orange",
-          };
-          let needleIndex = manipulableComboToGuess.indexOf(value);
-          manipulableComboToGuess[needleIndex] = "0"; // remove from following matches
+          // we want to go orange only if the letter is not green already
+          if (newRetour[index].color != "green") {
+            newRetour[index] = {
+              letter: value,
+              color: "orange",
+            };
+            let needleIndex = manipulableComboToGuess.indexOf(value);
+            manipulableComboToGuess[needleIndex] = "0"; // remove from following matches
+          }
         }
       });
-      this.guesses.push(retour);
-      this.disableLetters(retour);
-
-      if (this.checkVictory()) {
-        return;
-      }
+      this.guesses.push(newRetour);
+      this.disableLetters(newRetour);
     },
 
     checkVictory() {

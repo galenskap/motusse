@@ -54,6 +54,9 @@ h1 {
 .hidden {
   display: none;
 }
+.button {
+  user-select: none;
+}
 
 #app {
   display: flex;

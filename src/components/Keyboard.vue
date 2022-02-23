@@ -66,7 +66,17 @@ export default {
         </div>
 
         <div class="actions kbline">
-            <div @click="erase" class="button">&#129044;</div>
+            <div @click="erase" class="button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+              aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>Supprimer</title>
+                <path data-name="layer2"
+                fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" d="M14 31.998h36"
+                stroke-linejoin="round" stroke-linecap="round"></path>
+                <path data-name="layer1" fill="none" stroke="#202020" stroke-miterlimit="10"
+                stroke-width="2" d="M28 18L14 32l14 14" stroke-linejoin="round" stroke-linecap="round"></path>
+              </svg>
+            </div>
             <div @click="check" class="button">OK</div>
         </div>
     </div>
@@ -81,6 +91,9 @@ export default {
 }
 .button.grey {
   background-color: var(--wrong);
+}
+.button svg {
+  width: 1.2rem;
 }
 
 .kbline {
