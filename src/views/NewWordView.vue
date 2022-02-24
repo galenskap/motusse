@@ -5,7 +5,6 @@ import { RouterLink } from "vue-router";
 export default {
   data() {
     return {
-      //secretUrl: this.encrypt(),
       word: "",
       errorLength: false,
       errorDic: false,
@@ -14,34 +13,44 @@ export default {
   },
   methods: {
     send() {
-      // cleans the input
-      let cleanedWord = this.word; // todo
+      // remove special caracters from string
+      this.word = this.cleanInput();
 
       // check length
-      if (cleanedWord.length < 3) {
+      if (this.word.length < 3) {
         this.errorLength = true;
         return;
       }
 
       // check if word exists in French dictionnary
-      if (!DicFr.includes(cleanedWord.toLowerCase())) {
+      if (!DicFr.includes(this.word.toLowerCase())) {
         this.errorDic = true;
         return;
       }
 
       // generate sharing URL
-      this.sharingCode = this.encrypt(cleanedWord);
+      this.sharingCode = this.encrypt();
     },
 
-    encrypt(cleanedWord) {
-      //let cleanedWord = 'compote';
-      let encodedWord = encodeURI(btoa(cleanedWord));
+    encrypt() {
+      const encodedWord = encodeURI(btoa(this.word));
       return encodedWord;
     },
 
+    cleanInput() {
+      // https://ricardometring.com/javascript-replace-special-characters
+      const parsed = this.word.normalize('NFD').replace(/([\u0300-\u036f]|[^a-zA-Z])/g, '');
+      return parsed;
+    },
+
+    handleInput(e) {
+      if (e.key == "Enter") { this.send(); return; }
+      // hide errors in any case
+      this.errorLength = false;
+      this.errorDic = false;
+    },
+
     // todo :
-    // 1. send with enter key
-    // 2. hide errors when (re-)typing
     // 3. copy/share button after "share link" display?
   }
 }
@@ -50,7 +59,7 @@ export default {
 <template>
   <label for="word">Mot à faire deviner :</label>
   <div class="form">
-    <input v-model="word" name="word" type="text" />
+    <input v-model="word" name="word" type="text" @keyup="handleInput" />
     <div @click="send" class="button">OK</div>
   </div>
   <div class="errors">
