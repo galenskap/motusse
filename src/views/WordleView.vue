@@ -34,7 +34,11 @@ export default {
       // if the word has already been found, disable the functionnality
       if (this.found) return;
       if (this.currentCombo.length < this.comboToGuess.length) {
-        this.currentCombo.push(e.currentTarget.textContent);
+        // if e is a string, then it comes from key input
+        if (typeof(e) == "string")
+          this.currentCombo.push(e);
+        else
+          this.currentCombo.push(e.currentTarget.textContent);
         this.errorLength = false;
       }
     },
@@ -58,6 +62,7 @@ export default {
     erase() {
       this.currentCombo.pop();
       this.errorDic = false;
+      this.errorLength = false;
     },
 
     match() {
@@ -144,7 +149,7 @@ export default {
       else if (this.disabledLetters.includes(letter))
         return "grey";
       return false;
-    }
+    },
   },
 };
 </script>

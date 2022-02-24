@@ -45,7 +45,17 @@ export default {
     };
   },
   methods: {
-
+    handleKeydowns(e) {
+      const allowedCaracters = this.letters.flat();
+      if (e.key == "Enter") { this.check(); }
+      else if (e.key == "Backspace") { e.preventDefault(); this.erase(); }
+      else if (allowedCaracters.includes(e.key.toUpperCase())) {
+        this.addToCombo(e.key.toUpperCase());
+      }
+    }
+  },
+  created: function () {
+    window.addEventListener('keydown', this.handleKeydowns);
   },
 }
 
