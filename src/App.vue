@@ -22,6 +22,7 @@ import { RouterLink, RouterView } from "vue-router";
 body {
   font-family: "Dongle", 'Helvetica Neue', sans-serif;
   font-size: 2rem;
+  overflow-y: hidden;
 }
 
 header, main {
