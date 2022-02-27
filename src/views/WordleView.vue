@@ -185,6 +185,7 @@ export default {
   flex-direction: column;
   align-items: stretch;
   margin-bottom: 1rem;
+  overflow-y: scroll;
 }
 .guesses .line {
   display: flex;
