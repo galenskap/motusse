@@ -18,6 +18,7 @@ export default {
       errorDic: false,
       tries: 0,
       found: false,
+      maxHeight: 50,
     };
   },
   methods: {
@@ -25,8 +26,6 @@ export default {
       let decodedURI = decodeURI(this.$route.params.secret);
       let decrypted = atob(decodedURI).toUpperCase();
       let splitted = decrypted.split("");
-      /* console.log("splitted");
-      console.log(splitted); */
       return splitted;
     },
 
@@ -150,12 +149,22 @@ export default {
         return "grey";
       return false;
     },
+
+    calcMaxHeight() {
+      const kbzone = document.getElementsByClassName("keyboard")[0];
+      const hdzone = document.getElementsByTagName("header")[0];
+      const h1zone = document.getElementsByTagName("h1")[0];
+      this.maxHeight = document.body.scrollHeight - (hdzone.scrollHeight + kbzone.scrollHeight + h1zone.scrollHeight) - 40;
+    }
+  },
+  mounted() {
+    this.calcMaxHeight();
   },
 };
 </script>
 
 <template>
-  <div class="guesses">
+  <div class="guesses" :style="{ maxHeight: maxHeight + 'px' }">
     <div v-for="hints of guesses" :key="hints" class="line">
       <p v-for="hint of hints" :key="hint" :class="hint.color" class="hint">
         <span>{{ hint.letter }}</span>
@@ -186,6 +195,13 @@ export default {
   align-items: stretch;
   margin-bottom: 1rem;
   overflow-y: scroll;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.guesses::-webkit-scrollbar {
+  display: none;
 }
 .guesses .line {
   display: flex;

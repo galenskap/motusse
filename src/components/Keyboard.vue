@@ -142,7 +142,8 @@ export default {
     position: fixed;
     left: 0;
     right: 0;
-    bottom: .5em;
+    bottom: 0;
+    padding-bottom: 0.5rem;
   }
   .keyboard .button {
     width: 2rem;

@@ -64,7 +64,7 @@ h1 {
   flex-direction: column-reverse;
 }
 header {
-  margin-top: 4rem;
+  padding-top: 4rem;
 }
 
 .error {
@@ -77,14 +77,14 @@ header {
   }
   header, main {
     max-width: auto;
-    margin: .5em auto;
+    padding: .5em auto;
     font-size: 1.7rem;
   }
   #app {
     flex-direction: column;
   }
   header {
-    margin-top: 0;
+    padding-top: 0;
   }
   main h1 {
     font-size: 4rem;
